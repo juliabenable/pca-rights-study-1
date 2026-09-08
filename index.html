@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rights Clause</title>
+<!--
+SPEC ─────────────────────────────────────────────
+PURPOSE   Settle what content rights Simple Skincare (The PCA Companies) actually
+          bought, show where Tony's words and the contract diverge, and hand ops
+          the exact lines for the brand-portal "Usage & Permissions" card and the
+          creator-app "Usage and Rights" card.
+SCOPE     Working here: copy-to-clipboard buttons on the paste-ready blocks;
+          in-page anchor nav.
+OUT       Rendered but inert: the two mock brief cards (they are pictures of
+          production surfaces with the proposed copy, not live components).
+DATA      Every quote is verbatim from its source (contract PDF, Slack, Granola
+          transcript, code). Sources are linked at the end. Nothing is invented.
+DECISIONS - Provenance is labeled on every claim: AGREED (signed contract),
+            SAID (a person, dated), DECIDED (team decision, dated), PROPOSED
+            (Julia, Sep 8), OPEN (needs a call). Never presented as more than it is.
+          - The recommended copy is ONE set of lines because the product renders
+            one field on both cards. Split versions are given for later.
+          - No em or en dashes anywhere on the page (house rule for anything
+            that leaves the building). Contract quotes that contained one are
+            quoted from the dash onward or with a colon, and marked.
+OPEN      Seven questions in section 6, each with a proposed default and owner.
+QA        console/token/resize(1440,1280,1024,768,375)/contrast/proof run Sep 8 2026.
+──────────────────────────────────────────────────
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ---- primitives ---- */
+  --paper-0:#FCFBF8; --paper-50:#F6F4EE; --paper-100:#EFECE3; --paper-200:#E3DFD3; --paper-300:#CFC9B9;
+  --ink-900:#1A1917; --ink-700:#3D3A34; --ink-600:#5A564E; --ink-500:#6E6960;
+  --teal-50:#EAF3F2; --teal-100:#D2E6E3; --teal-600:#1F5F5B; --teal-700:#174B48;
+  --green-50:#E9F3EC; --green-700:#1E6B3A;
+  --amber-50:#FBF1DC; --amber-700:#8A5A0B;
+  --red-50:#FBE9E7; --red-700:#A93226;
+  --violet-50:#EFEBFF; --violet-600:#6D5AE6;
+
+  /* ---- semantic aliases ---- */
+  --bg:var(--paper-50); --surface:var(--paper-0); --surface-deep:var(--paper-100);
+  --border:var(--paper-200); --border-strong:var(--paper-300);
+  --text:var(--ink-900); --text-secondary:var(--ink-700); --text-muted:var(--ink-600);
+  --primary:var(--teal-600); --primary-hover:var(--teal-700); --primary-tint:var(--teal-50); --focus:var(--teal-600);
+  --agreed:var(--green-700); --agreed-tint:var(--green-50);
+  --open:var(--amber-700); --open-tint:var(--amber-50);
+  --conflict:var(--red-700); --conflict-tint:var(--red-50);
+  --proposed:var(--teal-700); --proposed-tint:var(--teal-100);
+  --said:var(--ink-700); --said-tint:var(--paper-100);
+
+  /* ---- space ---- */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px;
+
+  /* ---- type ---- */
+  --font:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --fs-12:12px; --fs-13:13px; --fs-14:14px; --fs-16:16px; --fs-20:20px; --fs-24:24px; --fs-32:32px;
+  --fs-48:48px; /* INTENT: one hero size above the ramp for the page title only */
+
+  /* ---- radius / shadow / z / motion ---- */
+  --r-4:4px; --r-8:8px; --r-12:12px; --r-16:16px; --r-full:999px;
+  --shadow-1:0 1px 2px rgba(16,24,40,.05);
+  --z-sticky:100; --z-toast:400;
+  --t-fast:120ms; --t-med:200ms;
+  --measure:68ch;
+  --page-w:1120px;
+}
+
+/* ---- reset ---- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--font);font-size:var(--fs-16);line-height:1.5;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---- base ---- */
+.page{max-width:var(--page-w);margin:0 auto;padding:0 var(--sp-5) var(--sp-8)}
+p{max-width:var(--measure)}
+h1,h2,h3{line-height:1.2;letter-spacing:-0.01em}
+h1{font-family:var(--font-display);font-weight:500;font-size:var(--fs-48);letter-spacing:-0.02em}
+h2{font-family:var(--font-display);font-weight:500;font-size:var(--fs-32)}
+h3{font-size:var(--fs-20);font-weight:600}
+.eyebrow{font-size:var(--fs-12);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.muted{color:var(--text-muted)}
+.small{font-size:var(--fs-13)}
+strong{font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:var(--fs-13);background:var(--surface-deep);padding:1px 5px;border-radius:var(--r-4);overflow-wrap:anywhere}
+a.link{color:var(--primary);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color var(--t-fast)}
+a.link:hover{color:var(--primary-hover)}
+ul.plain{list-style:none}
+ul.plain li{position:relative;padding-left:var(--sp-4);max-width:var(--measure)}
+ul.plain li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:var(--r-full);background:var(--border-strong)}
+ul.plain li+li{margin-top:var(--sp-2)}
+
+/* ---- header ---- */
+.masthead{padding:var(--sp-7) 0 var(--sp-6);border-bottom:1px solid var(--border)}
+.masthead .eyebrow{margin-bottom:var(--sp-3)}
+.masthead h1{max-width:18ch}
+.masthead .dek{margin-top:var(--sp-4);font-family:var(--font-display);font-size:var(--fs-24);font-weight:400;color:var(--text-secondary);max-width:34ch;line-height:1.3}
+.masthead .meta{margin-top:var(--sp-5);display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);font-size:var(--fs-13);color:var(--text-muted)}
+
+/* ---- legend / tags ---- */
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:var(--r-4);line-height:1.4;white-space:nowrap}
+.tag::before{content:"";width:6px;height:6px;border-radius:var(--r-full);background:currentColor}
+.tag.agreed{color:var(--agreed);background:var(--agreed-tint)}
+.tag.said{color:var(--said);background:var(--said-tint)}
+.tag.decided{color:var(--primary);background:var(--primary-tint)}
+.tag.proposed{color:var(--proposed);background:var(--proposed-tint)}
+.tag.open{color:var(--open);background:var(--open-tint)}
+.tag.conflict{color:var(--conflict);background:var(--conflict-tint)}
+.legend{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-4)}
+.legend .pair{display:inline-flex;align-items:center;gap:var(--sp-2)}
+.legend span.desc{font-size:var(--fs-13);color:var(--text-muted)}
+
+/* ---- toc ---- */
+.toc{position:sticky;top:0;z-index:var(--z-sticky);background:var(--bg);border-bottom:1px solid var(--border);margin:0 calc(-1 * var(--sp-5));padding:var(--sp-3) var(--sp-5);display:flex;gap:var(--sp-4);overflow-x:auto;font-size:var(--fs-13);font-weight:500;color:var(--text-muted)}
+.toc a{white-space:nowrap;padding:2px 0;border-bottom:2px solid transparent;transition:color var(--t-fast),border-color var(--t-fast)}
+.toc a:hover{color:var(--text)}
+.toc a.is-active{color:var(--text);border-color:var(--primary)}
+
+/* ---- sections ---- */
+section{padding-top:var(--sp-7)}
+section>.eyebrow{margin-bottom:var(--sp-2)}
+section>h2{margin-bottom:var(--sp-4)}
+section>p+p{margin-top:var(--sp-3)}
+.lede{font-size:var(--fs-20);line-height:1.4;color:var(--text-secondary)}
+
+/* ---- tldr ---- */
+.tldr{list-style:none;counter-reset:n;display:grid;gap:var(--sp-3);margin-top:var(--sp-5)}
+.tldr li{counter-increment:n;display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--sp-3);padding:var(--sp-4) 0;border-top:1px solid var(--border)}
+.tldr li::before{content:counter(n,decimal-leading-zero);font-family:var(--font-display);font-size:var(--fs-24);color:var(--text-muted);line-height:1.2}
+.tldr li p{max-width:var(--measure)}
+.tldr li .tag{margin-top:var(--sp-2)}
+
+/* ---- quotes ---- */
+.quote{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-12);padding:var(--sp-5);box-shadow:var(--shadow-1)}
+.quote+.quote{margin-top:var(--sp-4)}
+.quote .src{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-3);margin-bottom:var(--sp-3);font-size:var(--fs-13);color:var(--text-muted)}
+.quote blockquote{font-family:var(--font-display);font-size:var(--fs-20);line-height:1.45;color:var(--text);max-width:var(--measure)}
+.quote blockquote mark{background:var(--primary-tint);color:inherit;padding:0 2px;border-radius:var(--r-4)}
+.quote blockquote mark.warn{background:var(--conflict-tint)}
+.quote .note{margin-top:var(--sp-3);font-size:var(--fs-13);color:var(--text-muted);max-width:var(--measure)}
+
+/* ---- facts strip ---- */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--sp-4);margin:var(--sp-5) 0}
+.facts div{border-top:2px solid var(--border-strong);padding-top:var(--sp-2)}
+.facts dt{font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.facts dd{font-size:var(--fs-16);font-weight:500;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* ---- three columns ---- */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4);margin-top:var(--sp-5)}
+.col{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-12);padding:var(--sp-4)}
+.col h3{font-size:var(--fs-14);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:var(--sp-3)}
+.col.grants h3{color:var(--agreed)} .col.denies h3{color:var(--conflict)} .col.silent h3{color:var(--open)}
+.col ul{list-style:none}
+.col li{font-size:var(--fs-14);padding-left:var(--sp-4);position:relative}
+.col li+li{margin-top:var(--sp-2)}
+.col li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:var(--r-full);background:currentColor;opacity:.5}
+
+/* ---- timeline ---- */
+.timeline{list-style:none;margin-top:var(--sp-5);border-left:1px solid var(--border-strong);padding-left:var(--sp-5)}
+.timeline li{position:relative;padding-bottom:var(--sp-5)}
+.timeline li::before{content:"";position:absolute;left:calc(-1 * var(--sp-5) - 5px);top:8px;width:9px;height:9px;border-radius:var(--r-full);background:var(--border-strong);border:2px solid var(--bg)}
+.timeline li.is-conflict::before{background:var(--conflict)}
+.timeline li.is-decided::before{background:var(--primary)}
+.timeline .when{font-size:var(--fs-13);font-weight:600;color:var(--text-muted);letter-spacing:.02em}
+.timeline .who{font-size:var(--fs-14);font-weight:600;margin-top:2px}
+.timeline blockquote{font-family:var(--font-display);font-size:var(--fs-20);line-height:1.4;margin-top:var(--sp-2);max-width:var(--measure)}
+.timeline .gloss{margin-top:var(--sp-2);font-size:var(--fs-14);color:var(--text-secondary);max-width:var(--measure)}
+.timeline .tag{margin-top:var(--sp-2)}
+
+/* ---- comparison table ---- */
+.tablewrap{overflow-x:auto;margin-top:var(--sp-5);border:1px solid var(--border);border-radius:var(--r-12);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:var(--fs-14)}
+th,td{text-align:left;vertical-align:top;padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--border)}
+th{font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-deep)}
+th:first-child,td:first-child{position:sticky;left:0;background:var(--surface);font-weight:600;min-width:150px;border-right:1px solid var(--border)}
+th:first-child{background:var(--surface-deep)}
+tr:last-child td{border-bottom:none}
+td.hit{color:var(--conflict);font-weight:500}
+td .sub{display:block;font-size:var(--fs-12);color:var(--text-muted);margin-top:2px}
+
+/* ---- pipeline diagram ---- */
+.pipe{display:grid;grid-template-columns:minmax(0,1.1fr) 40px minmax(0,1fr) 40px minmax(0,1.3fr);align-items:center;gap:var(--sp-2);margin-top:var(--sp-5)}
+.pipe .node{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-12);padding:var(--sp-4)}
+.pipe .node .eyebrow{margin-bottom:var(--sp-1)}
+.pipe .node p{font-size:var(--fs-14)}
+.pipe .arrow{display:flex;justify-content:center;color:var(--border-strong)}
+.pipe .fan{display:grid;gap:var(--sp-3)}
+.pipe .fan .node{border-color:var(--primary);}
+.pipe .node code{display:inline-block;margin-top:var(--sp-1)}
+
+/* ---- mock cards (pictures of production) ----
+   INTENT: every raw hex and px size in the .bp-card and .ca-card rules below is a
+   replica of the live brand-portal and creator-app surfaces captured Sep 8, so the
+   proposed copy is previewed in real chrome. They are not part of this page's system. */
+.mocks{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:var(--sp-5);margin-top:var(--sp-5);align-items:start}
+.mock-label{font-size:var(--fs-13);color:var(--text-muted);margin-bottom:var(--sp-2)}
+/* brand portal card, as captured Sep 8 */
+.bp-card{background:#FFFFFF;border:1px solid #E7E5EA;border-radius:16px;padding:28px 32px 32px;box-shadow:var(--shadow-1)} /* INTENT: production card colors, not tokens: this is a replica of the live brand-portal surface */
+.bp-card .bp-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.bp-card .bp-icon{width:44px;height:44px;border-radius:12px;background:#EFEBFF;display:flex;align-items:center;justify-content:center;color:#6D5AE6}
+.bp-card .bp-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:800;font-size:18px;letter-spacing:.02em;text-transform:uppercase;color:#141414} /* INTENT: replica of production weight/size */
+.bp-card p{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5;color:#5F5F66;max-width:none}
+.bp-card p+p{margin-top:14px}
+/* creator app card, as captured Sep 8 */
+.ca-card{background:#FFFFFF;border:1px solid #E8E8EC;border-radius:16px;padding:20px 20px 22px;max-width:380px;box-shadow:var(--shadow-1)} /* INTENT: production card colors, not tokens: replica of the live creator-app surface */
+.ca-card .ca-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ca-card .ca-icon{width:26px;height:26px;color:#6B6B72}
+.ca-card .ca-title{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:18px;color:#1C1C1E}
+.ca-card ul{list-style:none;padding-left:4px}
+.ca-card li{position:relative;padding-left:16px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.45;color:#5F5F66}
+.ca-card li::before{content:"\2022";position:absolute;left:0;color:#5F5F66}
+.ca-card li+li{margin-top:8px}
+
+/* ---- paste-ready blocks ---- */
+.paste{margin-top:var(--sp-4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-12);overflow:hidden}
+.paste .bar{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);background:var(--surface-deep);border-bottom:1px solid var(--border);font-size:var(--fs-13);color:var(--text-muted)}
+.paste .bar strong{color:var(--text)}
+.paste ol{list-style:none;counter-reset:l;padding:var(--sp-2) 0}
+.paste li{counter-increment:l;display:grid;grid-template-columns:32px minmax(0,1fr) 56px;gap:var(--sp-3);padding:var(--sp-2) var(--sp-4);font-size:var(--fs-14);line-height:1.5}
+.paste li::before{content:counter(l);color:var(--text-muted);font-variant-numeric:tabular-nums;text-align:right}
+.paste li .n{font-size:var(--fs-12);color:var(--text-muted);text-align:right;font-variant-numeric:tabular-nums;padding-top:2px}
+.paste li.is-optional{color:var(--text-secondary)}
+.paste li.is-optional::before{content:"opt"}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--r-8);font-size:var(--fs-13);font-weight:600;color:var(--surface);background:var(--primary);transition:background-color var(--t-fast);border:1px solid transparent}
+.btn:hover{background:var(--primary-hover)}
+.btn.is-done{background:var(--agreed)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);margin-top:var(--sp-4)}
+.two>div>h3{font-size:var(--fs-16);margin-bottom:var(--sp-2)}
+.two .paste{margin-top:0}
+
+/* ---- words ---- */
+.words{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);margin-top:var(--sp-5)}
+.words .col h3{text-transform:none;letter-spacing:0;font-size:var(--fs-16)}
+.words .col.never h3{color:var(--conflict)} .words .col.always h3{color:var(--agreed)}
+
+/* ---- open questions ---- */
+.openlist{list-style:none;margin-top:var(--sp-5);display:grid;gap:var(--sp-3)}
+.openlist li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.4fr) 140px;gap:var(--sp-4);padding:var(--sp-4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-12)}
+.openlist li .q{font-weight:600}
+.openlist li .q .tag{margin-top:var(--sp-2)}
+.openlist li .d{font-size:var(--fs-14);color:var(--text-secondary)}
+.openlist li .d b{display:block;font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px}
+.openlist li .o{font-size:var(--fs-14)}
+.openlist li .o b{display:block;font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px}
+
+/* ---- sources ---- */
+.sources{list-style:none;margin-top:var(--sp-4);columns:2;column-gap:var(--sp-6)}
+.sources li{break-inside:avoid;font-size:var(--fs-14);padding:var(--sp-2) 0;border-top:1px solid var(--border)}
+.sources li span{display:block;font-size:var(--fs-12);color:var(--text-muted);overflow-wrap:anywhere}
+
+/* ---- footer ---- */
+footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(--border);font-size:var(--fs-13);color:var(--text-muted)}
+
+/* ---- toast ---- */
+.toast{position:fixed;left:50%;bottom:var(--sp-5);transform:translateX(-50%) translateY(8px);opacity:0;background:var(--ink-900);color:var(--surface);padding:var(--sp-2) var(--sp-4);border-radius:var(--r-8);font-size:var(--fs-13);z-index:var(--z-toast);pointer-events:none;transition:opacity var(--t-med),transform var(--t-med)}
+.toast.is-on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---- responsive ---- */
+@media (max-width:1024px){
+  .cols{grid-template-columns:1fr}
+  .mocks{grid-template-columns:1fr}
+  .pipe{grid-template-columns:1fr}
+  .pipe .arrow{transform:rotate(90deg);height:24px}
+  .words{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .openlist li{grid-template-columns:1fr}
+  .sources{columns:1}
+}
+@media (max-width:768px){
+  h1{font-size:var(--fs-32)}
+  h2{font-size:var(--fs-24)}
+  .masthead .dek{font-size:var(--fs-20)}
+  .quote blockquote,.timeline blockquote{font-size:var(--fs-16)}
+  .bp-card{padding:20px}
+  .paste li{grid-template-columns:24px minmax(0,1fr)}
+  .paste li .n{display:none}
+  .tag{white-space:normal;line-height:1.3}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <div class="eyebrow">Simple Skincare · The PCA Companies · content rights</div>
+  <h1>The Rights Clause</h1>
+  <p class="dek">What the contract grants, what Tony has said, and the words for both brief cards.</p>
+  <div class="meta">
+    <span>Sep 8, 2026</span>
+    <span>Julia, with Claude</span>
+    <span>For Tony, Katie, Nisarg, Amine</span>
+    <span>Read before the Sep 10 PCA onboarding call (12:30pm PT)</span>
+  </div>
+  <div class="legend">
+    <span class="pair"><span class="tag agreed">Agreed</span><span class="desc">in the signed contract</span></span>
+    <span class="pair"><span class="tag said">Said</span><span class="desc">a person, on a date, quoted</span></span>
+    <span class="pair"><span class="tag decided">Decided</span><span class="desc">a team decision, dated</span></span>
+    <span class="pair"><span class="tag proposed">Proposed</span><span class="desc">Julia, Sep 8, not yet agreed</span></span>
+    <span class="pair"><span class="tag open">Open</span><span class="desc">needs a call</span></span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#short">Short version</a>
+  <a href="#contract">The contract</a>
+  <a href="#tony">What Tony says</a>
+  <a href="#gap">Where they diverge</a>
+  <a href="#product">One field, two cards</a>
+  <a href="#copy">The wording</a>
+  <a href="#open">Open before Sep 10</a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<!-- ============ 1. SHORT VERSION ============ -->
+<section id="short">
+  <div class="eyebrow">1</div>
+  <h2>The short version</h2>
+  <p class="lede">Simple Skincare is our first paid campaign, and the payment is for rights. The contract defines those rights precisely. Our own words about them do not yet match it.</p>
+  <ol class="tldr">
+    <li><div><p><strong>The contract grants a 90-day license, not ownership.</strong> Full usage rights including paid usage, raw files where available, the creator keeps ownership, and any creator fee is passed through at cost, capped at $100 per creator.</p><span class="tag agreed">Agreed · signed Aug 10</span></div></li>
+    <li><div><p><strong>Tony has called it "full ownership rights."</strong> Section 3 of the same contract says content "is owned by the respective creator unless separately agreed." Pranav should hear one version, and it has to be the signed one.</p><span class="tag conflict">Conflict · Slack Aug 10 vs contract</span></div></li>
+    <li><div><p><strong>Every creator agrees at accept, and gets paid for it.</strong> Tony, Aug 10: "it has to be in the brief, creator agreed to it and get paid, or they don't get the campaign." The per-creator payment on this deal is the rights fee. That makes the creator brief card a consent moment, not a footnote.</p><span class="tag said">Said · Tony, Aug 10</span></div></li>
+    <li><div><p><strong>One field feeds both cards.</strong> The brand portal "Usage &amp; Permissions" card and the creator app "Usage and Rights" card both render <code>usage_permissions</code>. Whatever ops types shows on both. So the copy must name the brand and read correctly to a creator and to Pranav at the same time.</p><span class="tag agreed">Verified in code · Sep 8</span></div></li>
+    <li><div><p><strong>Five things the contract does not say.</strong> When the 90 days start, which edits are allowed, ads from the creator's own handle, exclusivity, and renewal. Section 6 proposes a default for each, to confirm on Sep 10.</p><span class="tag open">Open · 7 questions</span></div></li>
+  </ol>
+</section>
+
+<!-- ============ 2. THE CONTRACT ============ -->
+<section id="contract">
+  <div class="eyebrow">2</div>
+  <h2>What the contract says</h2>
+  <p>The PCA agreement was cloned from the Just Juice Fragrance agreement in July. Benny's Jul 16 note in Slack: "usage-rights language preserved from the current agreement." Both PDFs carry the identical clause. Alberto Rodas signed for The PCA Companies on Aug 10, 2026. The rights clause appears twice.</p>
+
+  <dl class="facts">
+    <div><dt>Brand</dt><dd>The PCA Companies</dd></div>
+    <div><dt>Subscription</dt><dd>$1,999 / mo</dd></div>
+    <div><dt>Creators</dt><dd>50 / month</dd></div>
+    <div><dt>Term</dt><dd>12 months</dd></div>
+    <div><dt>Cancel</dt><dd>Any time in first 3 months</dd></div>
+    <div><dt>Signed</dt><dd>Aug 10, 2026</dd></div>
+  </dl>
+
+  <div class="quote">
+    <div class="src"><span class="tag agreed">Agreed</span><span>Page 1, "What's Included In Your Subscription Today", bullet "Usage Rights"</span></div>
+    <blockquote>Brand will receive <mark>90 days of full usage rights, including paid usage rights</mark>, for all videos. <mark>Videos provided as raw files.</mark> Benable will secure as many of those rights free of charge as possible. If a creator requires a usage fee, Benable will bill the brand only for the creator fee actually paid to secure those rights, with no additional markup or charge from Benable. <mark>Creator-specific usage fees are not to exceed $100 per creator.</mark> Benable will not charge any fees for securing these paid rights.</blockquote>
+    <p class="note">The paragraph above it: "Any creator usage-rights fees are billed only as pass-through reimbursements for amounts Benable actually pays to creators."</p>
+  </div>
+
+  <div class="quote">
+    <div class="src"><span class="tag agreed">Agreed</span><span>Section 3, "Content &amp; Intellectual Property"</span></div>
+    <blockquote>All content created by creators in connection with Brand Portal campaigns or activities <mark class="warn">is owned by the respective creator</mark> unless separately agreed. Benable retains the right to display, distribute, and promote such content on the Benable platform. For campaign videos, Brand will receive 90-day usage rights, including paid usage rights, with raw files provided where available. Benable will secure as many of those rights free of charge as possible; if a creator requires a usage fee, Benable will bill Brand only for the creator fee actually paid, with no additional markup or charge from Benable.</blockquote>
+  </div>
+
+  <div class="cols">
+    <div class="col grants">
+      <h3>It grants</h3>
+      <ul>
+        <li>90 days of usage</li>
+        <li>Full usage including paid usage, which covers ads run from the brand's own accounts</li>
+        <li>Raw video files, "where available"</li>
+        <li>Benable secures the rights, free where possible</li>
+        <li>Creator fee passed through at cost, never above $100 per creator</li>
+      </ul>
+    </div>
+    <div class="col denies">
+      <h3>It does not grant</h3>
+      <ul>
+        <li>Ownership. The creator owns the content.</li>
+        <li>Anything perpetual, or "in perpetuity"</li>
+        <li>Use past 90 days without a new agreement</li>
+        <li>A Benable fee for securing rights (there is none)</li>
+      </ul>
+    </div>
+    <div class="col silent">
+      <h3>It is silent on</h3>
+      <ul>
+        <li>When the 90 days start</li>
+        <li>Which edits are allowed</li>
+        <li>Ads from the creator's own handle (Spark Ads, partnership ads need a creator code)</li>
+        <li>Exclusivity, and resale to third parties</li>
+        <li>Renewal after 90 days, and its price</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. WHAT TONY SAYS ============ -->
+<section id="tony">
+  <div class="eyebrow">3</div>
+  <h2>What Tony says</h2>
+  <p>Every statement below is quoted from its source. Three of them describe the deal in words the contract does not use. The Aug 7 decision is the team's own line for post-hoc rights, and it is the closest thing we have to house language.</p>
+
+  <ul class="timeline">
+    <li>
+      <div class="when">Aug 3 · standup</div>
+      <div class="who">Tony, framing the rights offer for the manual test</div>
+      <p class="gloss">Included in every campaign: 30 days of organic usage. Paid: raw files, perpetuity, paid ads, website. Recorded in the rights-language doc that day.</p>
+      <span class="tag said">Said</span>
+    </li>
+    <li class="is-decided">
+      <div class="when">Aug 7 · standup</div>
+      <div class="who">Tony, Katie, Julia: the manual rights offer</div>
+      <blockquote>$75 flat, take it or leave it, no pressure. Everything on one 12-month clock: owned channels and paid ads. Raw files delivered outright. Renewable through Benable.</blockquote>
+      <p class="gloss">Tony on the word "perpetual": it "spooks people, no brand uses it." Also decided that week: creator-facing copy says "content rights," never "UGC."</p>
+      <span class="tag decided">Decided · Aug 7</span>
+    </li>
+    <li class="is-conflict">
+      <div class="when">Aug 10 · Slack, #smaller-team</div>
+      <div class="who">Tony, announcing the deal</div>
+      <blockquote>BIGGEST contract yet!! $2,000 per month! ... And it includes them also paying $50-$100 per creator for <mark class="warn">full ownership rights</mark> to the videos (paid on top of the monthly subscription).</blockquote>
+      <p class="gloss">The contract signed the same day says the creator keeps ownership and the brand gets a 90-day license.</p>
+      <span class="tag conflict">Conflicts with contract</span>
+    </li>
+    <li>
+      <div class="when">Aug 10 · Slack, #ops-campaign-mgmnt</div>
+      <div class="who">Tony, answering Julia's "do they pay for ALL the content, or just the ones they choose after?"</div>
+      <blockquote>They have to own the rights for every single piece of content. So it has to be in the brief, creator agreed to it and get paid, or they don't agree to it and they don't get the campaign.</blockquote>
+      <p class="gloss">This is the operating rule: 100% of creators consent at accept, and the payment is for those rights. It is why the creator card is a consent moment.</p>
+      <span class="tag said">Said · defines the flow</span>
+    </li>
+    <li>
+      <div class="when">Aug 19 · Pair Eyewear onboarding call</div>
+      <div class="who">Tony, to Josh Webb (Growth HQ), describing rights options</div>
+      <blockquote>Some of the brands really like acquiring this content with a more perpetual license ... we would just find the cheapest price that the creator would take, $50, a $100 ... some of our brands include that in the campaign launch where they say, look, we're willing to pay $75 per video to own the perpetual license.</blockquote>
+      <p class="gloss">Josh declined for now. This is the sales register: "perpetual," "own," and a price that moves. None of it is in the PCA contract.</p>
+      <span class="tag said">Said · sales language</span>
+    </li>
+    <li>
+      <div class="when">Sep 3 · Mixik follow-up email (Blair, approved by Tony)</div>
+      <div class="who">The standard rights bullet in Tony's current sales email</div>
+      <blockquote>Rights. Re-share every post on your socials in perpetuity, plus 30 days of website and email use. When you love a piece and want to run ads with it, we secure extended rights with the creator for you (usually around $50 per video).</blockquote>
+      <p class="gloss">This is what every non-PCA brand is being told the default is. It matches the code default (30 days organic) and Katie's Aug 6 language.</p>
+      <span class="tag said">Said · the default for other brands</span>
+    </li>
+    <li>
+      <div class="when">Sep 4 · Retention findings call</div>
+      <div class="who">Tony, on the first PCA campaign</div>
+      <p class="gloss">$100 per creator on PCA's and Pair's first campaigns if they post 5 or more days before the deadline. Tony sends it by text, tracked in a sheet, no product change. This is a speed bonus and is separate from the rights fee.</p>
+      <span class="tag decided">Decided · Sep 4 · off-product</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ 4. WHERE THEY DIVERGE ============ -->
+<section id="gap">
+  <div class="eyebrow">4</div>
+  <h2>Where the words diverge</h2>
+  <p>Five versions of "rights" are in circulation. Red cells are the ones that would surprise Pranav, or a creator, if they compared notes with the contract.</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Contract, signed Aug 10</th>
+          <th>Tony, Slack Aug 10</th>
+          <th>Tony, sales language (Aug 19, Sep 3)</th>
+          <th>Team decision, Aug 7 (manual offer)</th>
+          <th>Product default today</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Duration</td><td>90 days</td><td class="hit">"full ownership" (no end)</td><td class="hit">Reshare "in perpetuity," 30 days site and email</td><td>12 months</td><td>30 days organic in code<span class="sub">The Sep 8 screenshots show 90 days</span></td></tr>
+        <tr><td>Paid usage (ads)</td><td>Included</td><td>Included</td><td class="hit">Extra, after the fact, "around $50 per video"</td><td>Included in the $75</td><td class="hit">Not included, "case by case"</td></tr>
+        <tr><td>Raw files</td><td>Yes, where available</td><td>Implied</td><td>After the fact</td><td>Yes, delivered outright</td><td class="hit">No</td></tr>
+        <tr><td>Ownership</td><td>Creator keeps it</td><td class="hit">Brand "owns"</td><td class="hit">"own the perpetual license"</td><td>Creator keeps it, brand licenses</td><td>Creator keeps it</td></tr>
+        <tr><td>Fee per creator</td><td>Up to $100, passed through at cost</td><td>$50 to $100</td><td>$50 to $100, or $75 per video upfront</td><td>$75 flat</td><td class="hit">None</td></tr>
+        <tr><td>Consent moment</td><td>Not specified</td><td>At accept, in the brief, every creator</td><td>Per video after the fact, or at accept for $75</td><td>SMS after the post, per video</td><td class="hit">None</td></tr>
+        <tr><td>Edits</td><td>Silent</td><td>Silent</td><td>Silent</td><td>Light edits allowed<span class="sub">Tony wanted edit language out of the upfront pitch</span></td><td>Silent</td></tr>
+        <tr><td>Creator-handle ads (Spark, partnership codes)</td><td>Silent</td><td>Silent</td><td>Silent</td><td>Not in v1, "we can arrange"</td><td>"whitelisting" named as purchasable</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 5. ONE FIELD, TWO CARDS ============ -->
+<section id="product">
+  <div class="eyebrow">5</div>
+  <h2>One field, two cards</h2>
+  <p>Both screenshots from Sep 8 are the same data. The admin textarea "Usage &amp; Permissions" (one line per bullet, on the organization's campaign setup defaults) is stored as <code>brief.usage_permissions</code>. The brand portal renders every line on its card. The creator app renders every line on its card, and only falls back to a built-in sentence when the list is empty.</p>
+
+  <div class="pipe">
+    <div class="node">
+      <div class="eyebrow">Admin</div>
+      <p>Organization → Campaign setup defaults → Brief → <strong>Usage &amp; Permissions</strong>. One line per bullet.</p>
+      <code>campaign_setup_defaults.brief.usage_permissions</code>
+    </div>
+    <div class="arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+    <div class="node">
+      <div class="eyebrow">Brief</div>
+      <p>Copied onto every new campaign draft. Code default when empty: the two sentences in the left screenshot, with <strong>30 days</strong>, not 90.</p>
+      <code>scaffold_draft_service.rb</code>
+    </div>
+    <div class="arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+    <div class="fan">
+      <div class="node">
+        <div class="eyebrow">Brand portal</div>
+        <p>"Usage &amp; Permissions" card on the campaign page. Pranav reads this.</p>
+      </div>
+      <div class="node">
+        <div class="eyebrow">Creator app</div>
+        <p>"Usage and Rights" card on the invite, above <strong>Accept &amp; Commit</strong>. The creator reads this, then taps accept.</p>
+        <code>BriefCards.tsx · UsageRightsCard</code>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:var(--sp-5)"><strong>Consequence.</strong> A line that starts "Your brand receives" is read by creators. A line that starts "Brand receives" is read by the brand. Until product adds a creator-facing field, the copy has to name the brand and describe the terms in the third person. That happens to be the honest version too: both sides read the same words, and accept means the same thing on both ends.</p>
+  <p><strong>Also worth knowing.</strong> The generic default was 90 days until April 10, when it was cut to 30 because creators were declining over it (Sep 2 ad-activation study). Tony's current sales email promises 30 days plus reshare "in perpetuity." So 90 days is right for PCA because PCA bought it, and wrong as the default for everyone else.</p>
+</section>
+
+<!-- ============ 6. THE WORDING ============ -->
+<section id="copy">
+  <div class="eyebrow">6</div>
+  <h2>The wording</h2>
+  <p class="lede">One set of four lines, written for one field that two audiences read. Below it, split versions for when the field splits, and two optional lines.</p>
+
+  <h3 style="margin-top:var(--sp-6)">A. Recommended now: the shared field <span class="tag proposed">Proposed · Julia, Sep 8</span></h3>
+  <p style="margin-top:var(--sp-2)">Paste into the organization's Usage &amp; Permissions default, one line per bullet. Zero build. The $100 and the clock start are proposals, see section 7.</p>
+
+  <div class="paste" id="paste-shared">
+    <div class="bar"><span><strong>usage_permissions</strong> · Simple Skincare · 4 lines</span><button class="btn" data-copy="paste-shared">Copy lines</button></div>
+    <ol>
+      <li><span>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</span><span class="n"></span></li>
+      <li><span>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</span><span class="n"></span></li>
+      <li><span>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</span><span class="n"></span></li>
+      <li><span>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</span><span class="n"></span></li>
+    </ol>
+  </div>
+
+  <div class="mocks">
+    <div>
+      <div class="mock-label">Brand portal · "Usage &amp; Permissions" · with the four lines</div>
+      <div class="bp-card" aria-label="Brand portal card mock">
+        <div class="bp-head">
+          <div class="bp-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M4 7h16"/><path d="M6 7l-3 7a3.5 3.5 0 0 0 6 0L6 7z"/><path d="M18 7l-3 7a3.5 3.5 0 0 0 6 0l-3-7z"/></svg></div>
+          <div class="bp-title">Usage &amp; Permissions</div>
+        </div>
+        <p>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</p>
+        <p>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</p>
+        <p>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</p>
+        <p>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</p>
+      </div>
+    </div>
+    <div>
+      <div class="mock-label">Creator app · "Usage and Rights" · same four lines</div>
+      <div class="ca-card" aria-label="Creator app card mock">
+        <div class="ca-head">
+          <svg class="ca-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3v3"/><path d="M21 12h-3"/></svg>
+          <div class="ca-title">Usage and Rights</div>
+        </div>
+        <ul>
+          <li>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</li>
+          <li>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</li>
+          <li>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</li>
+          <li>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:var(--sp-7)">B. If the field splits <span class="tag proposed">Proposed</span></h3>
+  <p style="margin-top:var(--sp-2)">When product adds a creator-facing rights field, each side can speak in the second person. Same terms, different pronoun.</p>
+  <div class="two">
+    <div>
+      <h3>Brand portal, brand-facing</h3>
+      <div class="paste" id="paste-brand">
+        <div class="bar"><span>3 lines</span><button class="btn" data-copy="paste-brand">Copy lines</button></div>
+        <ol>
+          <li><span>Your brand receives 90 days of full usage rights to every video from this campaign, including paid ads on your own channels, plus the raw video file.</span><span class="n"></span></li>
+          <li><span>Every creator agrees to these rights when they accept the campaign. Light edits are fine. Edits that change what a creator says or how they look are not.</span><span class="n"></span></li>
+          <li><span>Each creator's rights fee is billed at cost on your monthly invoice, with no Benable markup. Need longer than 90 days? Ask us and we will arrange a renewal with the creator.</span><span class="n"></span></li>
+        </ol>
+      </div>
+    </div>
+    <div>
+      <h3>Creator app, creator-facing</h3>
+      <div class="paste" id="paste-creator">
+        <div class="bar"><span>4 lines</span><button class="btn" data-copy="paste-creator">Copy lines</button></div>
+        <ol>
+          <li><span>You're paid $100 for the content rights on this campaign, via PayPal or Venmo, once your final links and video file are verified.</span><span class="n"></span></li>
+          <li><span>Simple Skincare can use your video for 90 days after you post: on their social accounts, website, emails, and in their ads.</span><span class="n"></span></li>
+          <li><span>You share the original file (the final version you upload for review counts). Your post stays live on your page, and the video stays yours.</span><span class="n"></span></li>
+          <li><span>They can trim, caption, or add a logo. They can't change what you say or how you look, or pass the video to another brand. Accepting is your agreement to this.</span><span class="n"></span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:var(--sp-7)">C. Optional lines</h3>
+  <div class="paste" id="paste-optional">
+    <div class="bar"><span><strong>Use only if the matching question in section 7 lands that way</strong></span><button class="btn" data-copy="paste-optional">Copy lines</button></div>
+    <ol>
+      <li class="is-optional"><span>Running a video as an ad from the creator's own account (Spark Ads, partnership ads) needs the creator's authorization code. Benable requests it for you. <em>Add only if Pranav confirms they want creator-handle ads.</em></span><span class="n"></span></li>
+      <li class="is-optional"><span>Each creator's rights fee is billed at cost on your monthly invoice. No Benable markup. <em>Belongs on the fee card in Amine's paid-campaign flow, not on the shared rights card, because creators would read it too.</em></span><span class="n"></span></li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <div class="col never">
+      <h3>Never on the creator side</h3>
+      <ul>
+        <li><strong>UGC</strong> (decided Aug 7: "content rights")</li>
+        <li><strong>Perpetual, forever, in perpetuity</strong> (Tony, Aug 7: "spooks people")</li>
+        <li><strong>Own, ownership</strong> (the contract says the creator owns it)</li>
+        <li><strong>Bonus, reward, prize, earned</strong> (paid-campaign vocabulary, decided Aug 28: it is "your payment")</li>
+        <li><strong>Whitelisting</strong> (industry jargon; say "ads from your account")</li>
+      </ul>
+    </div>
+    <div class="col always">
+      <h3>Why these lines</h3>
+      <ul>
+        <li>Every term comes from the contract: 90 days, paid usage, raw files, creator keeps ownership, fee capped at $100.</li>
+        <li>The brand is named, so the same sentence is true on both cards.</li>
+        <li>Line 4 turns Accept into the consent Tony asked for on Aug 10, and names the payment the way the paid-campaign copy does.</li>
+        <li>The edits rule is the Aug 7 manual-offer rule, and it must be visible here because creators consent before they film.</li>
+        <li>No dashes anywhere, so the lines can go straight into SMS and email too.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. OPEN ============ -->
+<section id="open">
+  <div class="eyebrow">7</div>
+  <h2>Open before Sep 10</h2>
+  <p>Each row has a proposed default so nothing is blocked. If nobody objects, the default ships.</p>
+  <ul class="openlist">
+    <li>
+      <div class="q">Ownership or license?<br><span class="tag conflict">Conflict</span></div>
+      <div class="d"><b>Proposed default</b>Use the contract's words with PCA: a 90-day license, creator keeps ownership. Tony confirms nothing else was promised on the sales call.</div>
+      <div class="o"><b>Owner</b>Tony, before the call</div>
+    </li>
+    <li>
+      <div class="q">When do the 90 days start?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>The day the video goes live. Simple to explain, and PCA already has the raw file from review by then.</div>
+      <div class="o"><b>Owner</b>Tony, then Pranav on the call</div>
+    </li>
+    <li>
+      <div class="q">Which edits are allowed?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>Trims, crops, captions, a logo, re-cuts for ad formats. Nothing that changes what the creator says or how they look. Tony preferred edit language out of the post-hoc pitch on Aug 7. Here it has to be in, because creators consent before filming.</div>
+      <div class="o"><b>Owner</b>Tony</div>
+    </li>
+    <li>
+      <div class="q">Ads from the creator's own handle?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>Not included. Spark Ads and partnership ads need a per-video creator code the contract never mentions. If Pranav wants it, add optional line C1 and Benable requests codes.</div>
+      <div class="o"><b>Owner</b>Pranav, on the call</div>
+    </li>
+    <li>
+      <div class="q">The fee: $50, $75, or $100?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>$100 flat, the contract cap. Julia's Aug 11 note already floated "a base rate of $100," and one number keeps the brief and the payment tile in sync. The manual post-hoc offer stays at $75.</div>
+      <div class="o"><b>Owner</b>Tony</div>
+    </li>
+    <li>
+      <div class="q">Renewal after 90 days?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>"Ask us and we will arrange it with the creator." Price undecided; the manual offer's $75 for 12 months is the natural anchor.</div>
+      <div class="o"><b>Owner</b>Tony</div>
+    </li>
+    <li>
+      <div class="q">Exclusivity and resale?<br><span class="tag open">Open</span></div>
+      <div class="d"><b>Proposed default</b>No exclusivity (creators keep working with other brands). No resale or transfer to third parties. Both are already in the Aug 7 manual-offer language.</div>
+      <div class="o"><b>Owner</b>Tony</div>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ 8. SOURCES ============ -->
+<section id="sources">
+  <div class="eyebrow">8</div>
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a class="link" href="https://benable.com/brand/contracts/pi74Be18KyhyWTELTJNqxN72XonyDtVNF1yB/agreement.pdf">The PCA Companies, Brand Portal Partnership Agreement (PDF)</a><span>Signed Aug 10, 2026. Rights clause on page 1 and in section 3.</span></li>
+    <li><a class="link" href="https://benable.com/brand/contracts/sVYSgX6YenxqgEqNCUJG6NYe1gYBie3CFC6N/agreement.pdf">Just Juice Fragrance agreement (PDF)</a><span>The template the PCA clause was cloned from. Identical wording.</span></li>
+    <li><a class="link" href="https://happy-ventures.slack.com/archives/C03A1F513CN/p1786388167781459">Tony, #smaller-team, Aug 10</a><span>"full ownership rights to the videos"</span></li>
+    <li><a class="link" href="https://happy-ventures.slack.com/archives/C0ASR6UT0LC/p1786388433594029">Tony, #ops-campaign-mgmnt, Aug 10</a><span>"They have to own the rights for every single piece of content..."</span></li>
+    <li><a class="link" href="https://happy-ventures.slack.com/archives/C0B1W1YAV35/p1784233083800489">Benny, #sdr-pipeline, Jul 16</a><span>"usage-rights language preserved from the current agreement"</span></li>
+    <li><a class="link" href="https://happy-ventures.slack.com/archives/C0B1W1YAV35/p1788470330278559">Blair / Tony, #sdr-pipeline, Sep 3</a><span>Mixik email with the standard "Rights" bullet</span></li>
+    <li><a class="link" href="https://notes.granola.ai/d/56d105ee-1df1-41d0-b67f-7d21a8f04b86">Pair Eyewear onboarding call, Aug 19</a><span>Tony's "perpetual license" pitch to Josh Webb</span></li>
+    <li><a class="link" href="https://notes.granola.ai/d/6c1ce69d-deef-4db3-b0bd-8eb0f27d5e30">Standup, Aug 11</a><span>Julia: "we have to figure out paid... $50 or $100 per creator"</span></li>
+    <li><a class="link" href="https://juliabenable.github.io/ugc-rights-language/">Rights language doc and market study</a><span>Aug 7 decisions: $75 flat, 12 months, no "perpetual," "content rights" not "UGC"</span></li>
+    <li><span style="display:inline">beneble_app</span><span>app/services/brand_collabs/campaigns/scaffold_draft_service.rb (default copy, 30 days) · app/models/brand_collab_organization.rb (usage_permissions defaults) · admin organizations/_brief_content_fields.html.erb (the textarea)</span></li>
+    <li><span style="display:inline">Creator app</span><span>packages/app/features/brand-collabs/components/BriefCards.tsx, UsageRightsCard: renders brief.usage_permissions, fallback "Brand receives 30 days of organic usage rights for all creator content."</span></li>
+    <li><span style="display:inline">Sep 4 retention findings call (Granola)</span><span>$100 per creator early-post bonus for PCA and Pair, by text, tracked in a sheet</span></li>
+  </ul>
+</section>
+
+<footer>
+  Prepared Sep 8, 2026. Quotes are verbatim; two contract sentences that contained an em dash are quoted from the dash onward. Everything marked Proposed is Julia's suggestion and is not agreed until Tony says so.
+</footer>
+
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+<script>
+// data: nothing to load; the copy blocks are the copy deck.
+// state: none.
+// behaviors
+function linesOf(blockId){
+  return [...document.querySelectorAll('#'+blockId+' ol li > span:first-child')]
+    .map(s => s.textContent.replace(/\s+/g,' ').trim());
+}
+function fillCounts(){
+  document.querySelectorAll('.paste ol li').forEach(li => {
+    const t = li.querySelector('span:first-child'); const n = li.querySelector('.n');
+    if(t && n) n.textContent = t.textContent.replace(/\s+/g,' ').trim().length + ' ch';
+  });
+}
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('is-on');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('is-on'), 1400);
+}
+function copyBlock(btn){
+  const id = btn.dataset.copy;
+  const text = linesOf(id).map(l => l.replace(/\s*Add only if.*$/,'').replace(/\s*Belongs on the fee card.*$/,'')).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('is-done'); btn.textContent = 'Copied';
+    toast('Copied ' + linesOf(id).length + ' lines');
+    setTimeout(() => { btn.classList.remove('is-done'); btn.textContent = 'Copy lines'; }, 1600);
+  }).catch(() => toast('Copy failed, select the text instead'));
+}
+function trackToc(){
+  const links = [...document.querySelectorAll('.toc a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  secs.forEach(s => s && io.observe(s));
+}
+// wiring
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copyBlock(b)));
+fillCounts();
+trackToc();
+</script>
+<!--
+INTERACTION INVENTORY
+- "Copy lines" click → writes the block's lines (one per line, optional notes stripped) to the clipboard; button turns green and reads "Copied" for 1.6s; toast fades in 200ms and out after 1.4s.
+- Scroll → sticky section nav underlines the section in view (IntersectionObserver, no motion beyond color/border 120ms).
+-->
+</body>
+</html>

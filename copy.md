@@ -7,14 +7,14 @@ Zero dashes by design so the lines also work in SMS and email.
 Paste into Admin > Organization > Campaign setup defaults > Brief > Usage & Permissions, one line per bullet.
 Renders on BOTH the brand-portal "Usage & Permissions" card and the creator-app "Usage and Rights" card.
 
-Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads on their own channels.
+Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads.
 Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.
 Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.
 
 ## B. If the field splits
 
 ### Brand portal (brand-facing)
-Your brand receives 90 days of full usage rights to every video from this campaign, including paid ads on your own channels, plus the raw video file.
+Your brand receives 90 days of full usage rights to every video from this campaign, including paid ads, plus the raw video file.
 Every creator agrees to these rights when they accept the campaign. Light edits are fine. Edits that change what a creator says or how they look are not.
 Each creator's rights fee is billed at cost on your monthly invoice, with no Benable markup. Need longer than 90 days? Ask us and we will arrange a renewal with the creator.
 

@@ -1,15 +1,14 @@
 # Simple Skincare (PCA) rights copy, paste-ready
 
-Status: terms DECIDED by Tony on the Sep 8 end-of-call (full 90-day paid usage, payment buys the rights, one flat fee). Wording by Julia, Sep 8 evening (line 3 ending assumed: "video to another brand"). The payment line was dropped Sep 8 (Julia): the amount lives on the payment tile at the top of the brief, not on the rights card. The clock start (day the post goes live) is still Julia's proposal.
+Status: terms DECIDED by Tony on the Sep 8 end-of-call (full 90-day paid usage, payment buys the rights, one flat fee). Wording: Julia's call, Sep 8 evening: two lines, the grant plus the reassurance, edits rule moved to C. The payment line was dropped Sep 8 (Julia): the amount lives on the payment tile at the top of the brief, not on the rights card. The clock start (day the post goes live) is still Julia's proposal.
 Zero dashes by design so the lines also work in SMS and email.
 
 ## A. Shared field (recommended now)
 Paste into Admin > Organization > Campaign setup defaults > Brief > Usage & Permissions, one line per bullet.
 Renders on BOTH the brand-portal "Usage & Permissions" card and the creator-app "Usage and Rights" card.
 
-Simple Skincare gets full usage rights to each video for 90 days from the day it goes live. That includes paid ads as well as organic social, website use and emails.
-You share the original video file. The creator keeps ownership, and the post stays live on their page.
-Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.
+Simple Skincare can use each video anywhere in their marketing, including paid ads, for 90 days after it goes live. Creators share the original video file.
+The creator keeps ownership of the video, and the post stays live on their page.
 
 ## B. If the field splits
 
@@ -24,6 +23,9 @@ You share the original file (the final version you upload for review counts). Yo
 They can trim, caption, or add a logo. They can't change what you say or how you look, or pass the video to another brand. Accepting is your agreement to this.
 
 ## C. Optional lines
+Edits rule, dropped from the card Sep 8 (Julia), add back only if creators ask what "use" allows:
+Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.
+
 Only if Pranav confirms creator-handle ads:
 Running a video as an ad from the creator's own account (Spark Ads, partnership ads) needs the creator's authorization code. Benable requests it for you.
 

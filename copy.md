@@ -13,14 +13,12 @@ The creator keeps ownership of the video, and the post stays live on their page.
 ## B. If the field splits
 
 ### Brand portal (brand-facing)
-Your brand receives 90 days of full usage rights to every video from this campaign, including paid ads, plus the raw video file.
-Every creator agrees to these rights when they accept the campaign. Light edits are fine. Edits that change what a creator says or how they look are not.
-Each creator's rights fee is billed at cost on your monthly invoice, with no Benable markup. Need longer than 90 days? Ask us and we will arrange a renewal with the creator.
+Your brand can use each video for 90 days after it goes live: organic use on your social accounts, website and emails, and paid use in ads. Creators share the original video file.
+The creator keeps ownership of the video, and their post stays live on their page.
 
 ### Creator app (creator-facing)
-Simple Skincare can use your video for 90 days after you post: on their social accounts, website, emails, and in their ads.
-You share the original file (the final version you upload for review counts). Your post stays live on your page, and the video stays yours.
-They can trim, caption, or add a logo. They can't change what you say or how you look, or pass the video to another brand. Accepting is your agreement to this.
+Simple Skincare can use your video for 90 days after it goes live: organic use on their social accounts, website and emails, and paid use in ads. You share the original video file.
+You keep ownership of your video, and your post stays live on your page.
 
 ## C. Optional lines
 Edits rule, dropped from the card Sep 8 (Julia), add back only if creators ask what "use" allows:

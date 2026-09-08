@@ -7,7 +7,7 @@ Zero dashes by design so the lines also work in SMS and email.
 Paste into Admin > Organization > Campaign setup defaults > Brief > Usage & Permissions, one line per bullet.
 Renders on BOTH the brand-portal "Usage & Permissions" card and the creator-app "Usage and Rights" card.
 
-Simple Skincare can use each video anywhere in their marketing, including organic social and paid ads, for 90 days after it goes live. Creators share the original video file.
+Simple Skincare can use each video for 90 days after it goes live: organic use on their social accounts, website and emails, and paid use in ads. Creators share the original video file.
 The creator keeps ownership of the video, and the post stays live on their page.
 
 ## B. If the field splits

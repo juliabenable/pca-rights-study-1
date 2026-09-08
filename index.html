@@ -182,7 +182,7 @@ section>p+p{margin-top:var(--sp-3)}
 
 /* ---- comparison table ---- */
 .tablewrap{overflow-x:auto;margin-top:var(--sp-5);border:1px solid var(--border);border-radius:var(--r-12);background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:900px;font-size:var(--fs-14)}
+table{border-collapse:collapse;width:100%;min-width:1100px;font-size:var(--fs-14)}
 th,td{text-align:left;vertical-align:top;padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--border)}
 th{font-size:var(--fs-12);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);background:var(--surface-deep)}
 th:first-child,td:first-child{position:sticky;left:0;background:var(--surface);font-weight:600;min-width:150px;border-right:1px solid var(--border)}
@@ -302,6 +302,7 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
     <span>Sep 8, 2026</span>
     <span>Julia, with Claude</span>
     <span>For Tony, Katie, Nisarg, Amine</span>
+    <span>Updated Sep 8, 6:50pm with Tony's answers</span>
     <span>Read before the Sep 10 PCA onboarding call (12:30pm PT)</span>
   </div>
   <div class="legend">
@@ -328,13 +329,25 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
 <section id="short">
   <div class="eyebrow">1</div>
   <h2>The short version</h2>
-  <p class="lede">Simple Skincare is our first paid campaign, and the payment is for rights. The contract defines those rights precisely. Our own words about them do not yet match it.</p>
+  <p class="lede">Simple Skincare is our first paid campaign, and the payment is for rights. The contract defines those rights precisely. On the Sep 8 call Tony confirmed the contract's version and narrowed the fee.</p>
+  <div class="quote" style="margin-top:var(--sp-5)">
+    <div class="src"><span class="tag decided">Decided · Sep 8, 6:30pm</span><span>Tony, joining the end of the Julia and Katie call</span></div>
+    <ul class="plain">
+      <li><strong>The license is the contract's.</strong> "They're looking for full 90-day paid usage rights for all videos." Ads included, and ads stop at 90 days.</li>
+      <li><strong>Tell creators plainly.</strong> "It should be full usage rights. Includes paid ads, organic, social, whatever, something like that. 90 days."</li>
+      <li><strong>The payment buys the rights.</strong> Asked whether the fee is what buys the usage right: "Yeah. Correct. I think that's a good distinction."</li>
+      <li><strong>One flat fee for campaign one, $50 or $75.</strong> "Let's just do $75 across the board," then "we'll probably go $50 or $75," to be set after hearing Pranav on Sep 10. No tiering built yet.</li>
+      <li><strong>Raw file means the video.</strong> "It's just the video." The final version uploaded for review counts.</li>
+      <li><strong>Campaign type is Gifted Product + Fee.</strong> "Gifted with fee. Okay, great."</li>
+      <li><strong>New ask: the money goes at the top.</strong> "It seems crazy that we're burying that they're paid $100 in the 4th bullet in light gray text." He wants the amount on the offer pill, the invite card, and the brief header, laid out in Figma for him to review.</li>
+    </ul>
+  </div>
   <ol class="tldr">
     <li><div><p><strong>The contract grants a 90-day license, not ownership.</strong> Full usage rights including paid usage, raw files where available, the creator keeps ownership, and any creator fee is passed through at cost, capped at $100 per creator.</p><span class="tag agreed">Agreed · signed Aug 10</span></div></li>
-    <li><div><p><strong>Tony has called it "full ownership rights."</strong> Section 3 of the same contract says content "is owned by the respective creator unless separately agreed." Pranav should hear one version, and it has to be the signed one.</p><span class="tag conflict">Conflict · Slack Aug 10 vs contract</span></div></li>
+    <li><div><p><strong>Tony has called it "full ownership rights."</strong> Section 3 of the same contract says content "is owned by the respective creator unless separately agreed." Pranav should hear one version, and it has to be the signed one. Resolved on the Sep 8 call: Tony confirmed the contract's version.</p><span class="tag decided">Resolved · Sep 8</span></div></li>
     <li><div><p><strong>Every creator agrees at accept, and gets paid for it.</strong> Tony, Aug 10: "it has to be in the brief, creator agreed to it and get paid, or they don't get the campaign." The per-creator payment on this deal is the rights fee. That makes the creator brief card a consent moment, not a footnote.</p><span class="tag said">Said · Tony, Aug 10</span></div></li>
     <li><div><p><strong>One field feeds both cards.</strong> The brand portal "Usage &amp; Permissions" card and the creator app "Usage and Rights" card both render <code>usage_permissions</code>. Whatever ops types shows on both. So the copy must name the brand and read correctly to a creator and to Pranav at the same time.</p><span class="tag agreed">Verified in code · Sep 8</span></div></li>
-    <li><div><p><strong>Five things the contract does not say.</strong> When the 90 days start, which edits are allowed, ads from the creator's own handle, exclusivity, and renewal. Section 6 proposes a default for each, to confirm on Sep 10.</p><span class="tag open">Open · 7 questions</span></div></li>
+    <li><div><p><strong>Five things the contract does not say.</strong> When the 90 days start, which edits are allowed, ads from the creator's own handle, exclusivity, and renewal. Tony did not touch these on Sep 8. Section 7 proposes a default for each, to confirm on Sep 10.</p><span class="tag open">Open · 5 questions</span></div></li>
   </ol>
 </section>
 
@@ -451,6 +464,13 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
       <p class="gloss">$100 per creator on PCA's and Pair's first campaigns if they post 5 or more days before the deadline. Tony sends it by text, tracked in a sheet, no product change. This is a speed bonus and is separate from the rights fee.</p>
       <span class="tag decided">Decided · Sep 4 · off-product</span>
     </li>
+    <li class="is-decided">
+      <div class="when">Sep 8 · end of the Julia and Katie call</div>
+      <div class="who">Tony, asked for one unified understanding before the copy is written</div>
+      <blockquote>They're looking for full 90-day paid usage rights for all videos. ... Full, full, full, full, full. ... I think it should be full usage rights. Includes paid ads, organic, social, whatever, something like that. 90 days.</blockquote>
+      <p class="gloss">On whether the payment buys the rights: "Yeah. Correct. I think that's a good distinction." On the fee, after reading the contract's $100 cap: "So then let's just do $75 across the board," then "we'll probably go $50 or $75 then," pending the Sep 10 call. His tier idea for later: $50 under 5,000 Instagram followers, $75 to 7,500, $100 above. On the brief: "It seems crazy that we're burying that they're paid $100 in the 4th bullet in light gray text ... it should be like a big thing at the top."</p>
+      <span class="tag decided">Decided · Sep 8</span>
+    </li>
   </ul>
 </section>
 
@@ -458,13 +478,14 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
 <section id="gap">
   <div class="eyebrow">4</div>
   <h2>Where the words diverge</h2>
-  <p>Five versions of "rights" are in circulation. Red cells are the ones that would surprise Pranav, or a creator, if they compared notes with the contract.</p>
+  <p>Six versions of "rights" have been in circulation. Red cells are the ones that would surprise Pranav, or a creator, if they compared notes with the contract. The Sep 8 column is the one that now governs.</p>
   <div class="tablewrap">
     <table>
       <thead>
         <tr>
           <th>Term</th>
           <th>Contract, signed Aug 10</th>
+          <th>Tony, Sep 8 call</th>
           <th>Tony, Slack Aug 10</th>
           <th>Tony, sales language (Aug 19, Sep 3)</th>
           <th>Team decision, Aug 7 (manual offer)</th>
@@ -472,14 +493,14 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
         </tr>
       </thead>
       <tbody>
-        <tr><td>Duration</td><td>90 days</td><td class="hit">"full ownership" (no end)</td><td class="hit">Reshare "in perpetuity," 30 days site and email</td><td>12 months</td><td>30 days organic in code<span class="sub">The Sep 8 screenshots show 90 days</span></td></tr>
-        <tr><td>Paid usage (ads)</td><td>Included</td><td>Included</td><td class="hit">Extra, after the fact, "around $50 per video"</td><td>Included in the $75</td><td class="hit">Not included, "case by case"</td></tr>
-        <tr><td>Raw files</td><td>Yes, where available</td><td>Implied</td><td>After the fact</td><td>Yes, delivered outright</td><td class="hit">No</td></tr>
-        <tr><td>Ownership</td><td>Creator keeps it</td><td class="hit">Brand "owns"</td><td class="hit">"own the perpetual license"</td><td>Creator keeps it, brand licenses</td><td>Creator keeps it</td></tr>
-        <tr><td>Fee per creator</td><td>Up to $100, passed through at cost</td><td>$50 to $100</td><td>$50 to $100, or $75 per video upfront</td><td>$75 flat</td><td class="hit">None</td></tr>
-        <tr><td>Consent moment</td><td>Not specified</td><td>At accept, in the brief, every creator</td><td>Per video after the fact, or at accept for $75</td><td>SMS after the post, per video</td><td class="hit">None</td></tr>
-        <tr><td>Edits</td><td>Silent</td><td>Silent</td><td>Silent</td><td>Light edits allowed<span class="sub">Tony wanted edit language out of the upfront pitch</span></td><td>Silent</td></tr>
-        <tr><td>Creator-handle ads (Spark, partnership codes)</td><td>Silent</td><td>Silent</td><td>Silent</td><td>Not in v1, "we can arrange"</td><td>"whitelisting" named as purchasable</td></tr>
+        <tr><td>Duration</td><td>90 days</td><td>90 days, "ads stop at 90 days"</td><td class="hit">"full ownership" (no end)</td><td class="hit">Reshare "in perpetuity," 30 days site and email</td><td>12 months</td><td>30 days organic in code<span class="sub">The Sep 8 screenshots show 90 days</span></td></tr>
+        <tr><td>Paid usage (ads)</td><td>Included</td><td>Included, "Full, full, full"</td><td>Included</td><td class="hit">Extra, after the fact, "around $50 per video"</td><td>Included in the $75</td><td class="hit">Not included, "case by case"</td></tr>
+        <tr><td>Raw files</td><td>Yes, where available</td><td>"It's just the video," the review upload counts</td><td>Implied</td><td>After the fact</td><td>Yes, delivered outright</td><td class="hit">No</td></tr>
+        <tr><td>Ownership</td><td>Creator keeps it</td><td>License, contract stands</td><td class="hit">Brand "owns"</td><td class="hit">"own the perpetual license"</td><td>Creator keeps it, brand licenses</td><td>Creator keeps it</td></tr>
+        <tr><td>Fee per creator</td><td>Up to $100, passed through at cost</td><td>Flat, $50 or $75, set after Sep 10<span class="sub">Tiers by followers parked for campaign 2</span></td><td>$50 to $100</td><td>$50 to $100, or $75 per video upfront</td><td>$75 flat</td><td class="hit">None</td></tr>
+        <tr><td>Consent moment</td><td>Not specified</td><td>At accept; the payment buys the rights</td><td>At accept, in the brief, every creator</td><td>Per video after the fact, or at accept for $75</td><td>SMS after the post, per video</td><td class="hit">None</td></tr>
+        <tr><td>Edits</td><td>Silent</td><td>Not discussed</td><td>Silent</td><td>Silent</td><td>Light edits allowed<span class="sub">Tony wanted edit language out of the upfront pitch</span></td><td>Silent</td></tr>
+        <tr><td>Creator-handle ads (Spark, partnership codes)</td><td>Silent</td><td>Not discussed</td><td>Silent</td><td>Silent</td><td>Not in v1, "we can arrange"</td><td>"whitelisting" named as purchasable</td></tr>
       </tbody>
     </table>
   </div>
@@ -527,16 +548,16 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
   <h2>The wording</h2>
   <p class="lede">One set of four lines, written for one field that two audiences read. Below it, split versions for when the field splits, and two optional lines.</p>
 
-  <h3 style="margin-top:var(--sp-6)">A. Recommended now: the shared field <span class="tag proposed">Proposed · Julia, Sep 8</span></h3>
-  <p style="margin-top:var(--sp-2)">Paste into the organization's Usage &amp; Permissions default, one line per bullet. Zero build. The $100 and the clock start are proposals, see section 7.</p>
+  <h3 style="margin-top:var(--sp-6)">A. Recommended now: the shared field <span class="tag decided">Terms decided · Sep 8</span> <span class="tag proposed">Wording proposed · Julia</span></h3>
+  <p style="margin-top:var(--sp-2)">Paste into the organization's Usage &amp; Permissions default, one line per bullet. Zero build. Lines 1, 2 and 4 now carry Tony's Sep 8 answers. The $75 may still become $50 after the Sep 10 call, and the clock start is Julia's proposal.</p>
 
   <div class="paste" id="paste-shared">
     <div class="bar"><span><strong>usage_permissions</strong> · Simple Skincare · 4 lines</span><button class="btn" data-copy="paste-shared">Copy lines</button></div>
     <ol>
-      <li><span>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</span><span class="n"></span></li>
+      <li><span>Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads on their own channels.</span><span class="n"></span></li>
       <li><span>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</span><span class="n"></span></li>
       <li><span>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</span><span class="n"></span></li>
-      <li><span>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</span><span class="n"></span></li>
+      <li><span>Each creator is paid $75 for these rights via PayPal or Venmo once their final links and video file are verified. Accepting this campaign is the creator's agreement to these terms.</span><span class="n"></span></li>
     </ol>
   </div>
 
@@ -548,10 +569,10 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
           <div class="bp-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M4 7h16"/><path d="M6 7l-3 7a3.5 3.5 0 0 0 6 0L6 7z"/><path d="M18 7l-3 7a3.5 3.5 0 0 0 6 0l-3-7z"/></svg></div>
           <div class="bp-title">Usage &amp; Permissions</div>
         </div>
-        <p>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</p>
+        <p>Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads on their own channels.</p>
         <p>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</p>
         <p>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</p>
-        <p>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</p>
+        <p>Each creator is paid $75 for these rights via PayPal or Venmo once their final links and video file are verified. Accepting this campaign is the creator's agreement to these terms.</p>
       </div>
     </div>
     <div>
@@ -562,10 +583,10 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
           <div class="ca-title">Usage and Rights</div>
         </div>
         <ul>
-          <li>Simple Skincare can use each video for 90 days from the day it goes live: on their social accounts, website, emails, and in paid ads on their own channels.</li>
+          <li>Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads on their own channels.</li>
           <li>Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.</li>
           <li>Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.</li>
-          <li>Each creator is paid $100 for these rights via PayPal or Venmo once their final links and file are verified. Accepting this campaign is the creator's agreement to these terms.</li>
+          <li>Each creator is paid $75 for these rights via PayPal or Venmo once their final links and video file are verified. Accepting this campaign is the creator's agreement to these terms.</li>
         </ul>
       </div>
     </div>
@@ -590,7 +611,7 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
       <div class="paste" id="paste-creator">
         <div class="bar"><span>4 lines</span><button class="btn" data-copy="paste-creator">Copy lines</button></div>
         <ol>
-          <li><span>You're paid $100 for the content rights on this campaign, via PayPal or Venmo, once your final links and video file are verified.</span><span class="n"></span></li>
+          <li><span>You're paid $75 for the content rights on this campaign, via PayPal or Venmo, once your final links and video file are verified.</span><span class="n"></span></li>
           <li><span>Simple Skincare can use your video for 90 days after you post: on their social accounts, website, emails, and in their ads.</span><span class="n"></span></li>
           <li><span>You share the original file (the final version you upload for review counts). Your post stays live on your page, and the video stays yours.</span><span class="n"></span></li>
           <li><span>They can trim, caption, or add a logo. They can't change what you say or how you look, or pass the video to another brand. Accepting is your agreement to this.</span><span class="n"></span></li>
@@ -608,6 +629,8 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
     </ol>
   </div>
 
+  <h3 style="margin-top:var(--sp-7)">D. Tony's new ask: the money goes at the top <span class="tag open">Open · owner Julia, Amine</span></h3>
+  <p style="margin-top:var(--sp-2)">Tony, Sep 8: "It seems crazy that we're burying that they're paid $100 in the 4th bullet in light gray text. That's a huge value prop." He wants the amount visible before the creator scrolls, on every step, and the whole path laid out in Figma so he can review it: the new-offer pill, the "a brand wants to work with you" card ("about the brand, price, gift plus $75"), and the brief header ("this is like a $75 campaign"). The rights card then explains what the $75 is for. This is a scope increase on Amine's paid-campaign screens, which today carry the fee in a tile and this card. Send Tony the Figma before building.</p>
   <div class="words">
     <div class="col never">
       <h3>Never on the creator side</h3>
@@ -639,13 +662,13 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
   <p>Each row has a proposed default so nothing is blocked. If nobody objects, the default ships.</p>
   <ul class="openlist">
     <li>
-      <div class="q">Ownership or license?<br><span class="tag conflict">Conflict</span></div>
-      <div class="d"><b>Proposed default</b>Use the contract's words with PCA: a 90-day license, creator keeps ownership. Tony confirms nothing else was promised on the sales call.</div>
-      <div class="o"><b>Owner</b>Tony, before the call</div>
+      <div class="q">Ownership or license?<br><span class="tag decided">Resolved · Sep 8</span></div>
+      <div class="d"><b>Tony's answer</b>The contract's version: full 90-day paid usage rights for all videos, ads included, ads stop at 90 days. The creator keeps ownership. The fee is what buys the rights.</div>
+      <div class="o"><b>Owner</b>Done</div>
     </li>
     <li>
       <div class="q">When do the 90 days start?<br><span class="tag open">Open</span></div>
-      <div class="d"><b>Proposed default</b>The day the video goes live. Simple to explain, and PCA already has the raw file from review by then.</div>
+      <div class="d"><b>Proposed default</b>The day the video goes live. Julia said this on the Sep 8 call and Tony did not object, but it was not confirmed. Simple to explain, and PCA already has the raw file from review by then.</div>
       <div class="o"><b>Owner</b>Tony, then Pranav on the call</div>
     </li>
     <li>
@@ -659,9 +682,9 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
       <div class="o"><b>Owner</b>Pranav, on the call</div>
     </li>
     <li>
-      <div class="q">The fee: $50, $75, or $100?<br><span class="tag open">Open</span></div>
-      <div class="d"><b>Proposed default</b>$100 flat, the contract cap. Julia's Aug 11 note already floated "a base rate of $100," and one number keeps the brief and the payment tile in sync. The manual post-hoc offer stays at $75.</div>
-      <div class="o"><b>Owner</b>Tony</div>
+      <div class="q">The fee: $50 or $75?<br><span class="tag open">Narrowed · Sep 8</span></div>
+      <div class="d"><b>Tony's answer</b>One flat amount for campaign one, no tiering built. He told PCA to expect an average nearer $40 to $50, so not $100 across the board. "$75 across the board," then "probably $50 or $75," decided after Pranav says which creators he wants on Sep 10. Katie is fine with $50 to start. Tier idea for campaign two ($50 under 5,000 followers, $75 to 7,500, $100 above) needs about an hour of plumbing from Nisarg.</div>
+      <div class="o"><b>Owner</b>Tony, after Sep 10</div>
     </li>
     <li>
       <div class="q">Renewal after 90 days?<br><span class="tag open">Open</span></div>
@@ -688,6 +711,7 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
     <li><a class="link" href="https://happy-ventures.slack.com/archives/C0B1W1YAV35/p1784233083800489">Benny, #sdr-pipeline, Jul 16</a><span>"usage-rights language preserved from the current agreement"</span></li>
     <li><a class="link" href="https://happy-ventures.slack.com/archives/C0B1W1YAV35/p1788470330278559">Blair / Tony, #sdr-pipeline, Sep 3</a><span>Mixik email with the standard "Rights" bullet</span></li>
     <li><a class="link" href="https://notes.granola.ai/d/56d105ee-1df1-41d0-b67f-7d21a8f04b86">Pair Eyewear onboarding call, Aug 19</a><span>Tony's "perpetual license" pitch to Josh Webb</span></li>
+    <li><a class="link" href="https://notes.granola.ai/d/ff5c56da-3651-440a-aa98-a0d7e7f882c0">End of call, Sep 8: Tony's notes on Simple Skincare rights</a><span>Full 90-day paid usage, ads stop at 90 days, payment buys the rights, $50 or $75 flat, money at the top of the brief</span></li>
     <li><a class="link" href="https://notes.granola.ai/d/6c1ce69d-deef-4db3-b0bd-8eb0f27d5e30">Standup, Aug 11</a><span>Julia: "we have to figure out paid... $50 or $100 per creator"</span></li>
     <li><a class="link" href="https://juliabenable.github.io/ugc-rights-language/">Rights language doc and market study</a><span>Aug 7 decisions: $75 flat, 12 months, no "perpetual," "content rights" not "UGC"</span></li>
     <li><span style="display:inline">beneble_app</span><span>app/services/brand_collabs/campaigns/scaffold_draft_service.rb (default copy, 30 days) · app/models/brand_collab_organization.rb (usage_permissions defaults) · admin organizations/_brief_content_fields.html.erb (the textarea)</span></li>
@@ -697,7 +721,7 @@ footer{margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(-
 </section>
 
 <footer>
-  Prepared Sep 8, 2026. Quotes are verbatim; two contract sentences that contained an em dash are quoted from the dash onward. Everything marked Proposed is Julia's suggestion and is not agreed until Tony says so.
+  Prepared Sep 8, 2026. Quotes are verbatim; two contract sentences that contained an em dash are quoted from the dash onward. Everything marked Proposed is Julia's suggestion and is not agreed until Tony says so. Everything marked Decided Sep 8 is from the end-of-call transcript.
 </footer>
 
 </div>

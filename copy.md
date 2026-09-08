@@ -1,14 +1,14 @@
 # Simple Skincare (PCA) rights copy, paste-ready
 
-Status: terms DECIDED by Tony on the Sep 8 end-of-call (full 90-day paid usage, payment buys the rights, one flat fee). Wording PROPOSED by Julia. The payment line was dropped Sep 8 (Julia): the amount lives on the payment tile at the top of the brief, not on the rights card. The clock start (day the post goes live) is still Julia's proposal.
+Status: terms DECIDED by Tony on the Sep 8 end-of-call (full 90-day paid usage, payment buys the rights, one flat fee). Wording by Julia, Sep 8 evening (line 3 ending assumed: "video to another brand"). The payment line was dropped Sep 8 (Julia): the amount lives on the payment tile at the top of the brief, not on the rights card. The clock start (day the post goes live) is still Julia's proposal.
 Zero dashes by design so the lines also work in SMS and email.
 
 ## A. Shared field (recommended now)
 Paste into Admin > Organization > Campaign setup defaults > Brief > Usage & Permissions, one line per bullet.
 Renders on BOTH the brand-portal "Usage & Permissions" card and the creator-app "Usage and Rights" card.
 
-Simple Skincare gets full usage rights to each video for 90 days from the day it goes live: organic social, website, emails, and paid ads.
-Creators share the original video file. The final version uploaded for review counts. The creator keeps ownership, and the post stays live on their page.
+Simple Skincare gets full usage rights to each video for 90 days from the day it goes live. That includes paid ads as well as organic social, website use and emails.
+You share the original video file. The creator keeps ownership, and the post stays live on their page.
 Light edits are fine: trims, captions, a logo, re-cuts for ad formats. No edits that change what the creator says or how they look, and no passing the video to another brand.
 
 ## B. If the field splits

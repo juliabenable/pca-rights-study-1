@@ -8,17 +8,17 @@ Paste into Admin > Organization > Campaign setup defaults > Brief > Usage & Perm
 Renders on BOTH the brand-portal "Usage & Permissions" card and the creator-app "Usage and Rights" card.
 
 Simple Skincare can use each video for 90 days after it goes live: organic use on their social accounts, website and emails, and paid use in ads.
-Creators share the original video file. The creator keeps ownership of the video, and the post stays live on their page.
+Creators share the original video file, and the post stays live on their page.
 
 ## B. If the field splits
 
 ### Brand portal (brand-facing)
 Your brand can use each video for 90 days after it goes live: organic use on your social accounts, website and emails, and paid use in ads.
-Creators share the original video file. The creator keeps ownership of the video, and their post stays live on their page.
+Creators share the original video file, and their post stays live on their page.
 
 ### Creator app (creator-facing)
 Simple Skincare can use your video for 90 days after it goes live: organic use on their social accounts, website and emails, and paid use in ads.
-You share the original video file. You keep ownership of your video, and your post stays live on your page.
+You share the original video file, and your post stays live on your page.
 
 ## C. Optional lines
 Edits rule, dropped from the card Sep 8 (Julia), add back only if creators ask what "use" allows:
